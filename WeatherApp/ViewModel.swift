@@ -24,11 +24,11 @@ class ViewModel: ObservableObject {
     
     func fetchCoordinates() {
         DispatchQueue.main.async {
-            self.isLoading = true // Start loading on the main thread
+            self.isLoading = true
         }
         networkService.fetchCoordinates()
             .map { response in
-                Coordinate(id: UUID(), latitude: response.coord.lat, longitude: response.coord.lon)
+                Coordinate(id: UUID(), latitude: response.coord.lat, longitude: response.coord.lon, timestamp: Date())
             }
             .sink(receiveCompletion: { [weak self] completion in
                 DispatchQueue.main.async {

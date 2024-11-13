@@ -4,9 +4,21 @@ WeatherApp is a simple iOS app that fetches and displays weather information for
 
 ## Features
 
-- **Weather Data Fetching**: Retrieves current weather data from the API with options to specify location.
-- **Map View**: Displays a map with a marker for the fetched location coordinates.
-- **History Log**: Keeps track of past location data, showing coordinates with timestamps.
+- **Weather Data Fetching**: Retrieves current weather data from the API for a specified city.
+- **Map View**: Displays a map with a marker at the fetched coordinates.
+- **Query History**: Keeps a log of past coordinate queries, displaying the date and time of each entry.
+
+## Project Structure
+
+The project follows an MVVM (Model-View-ViewModel) architecture to enhance code maintainability and separation of responsibilities.
+
+- **Models (`Models`)**: Defines data structures for weather data and coordinates.
+- **Service (`Service`)**: Manages network requests with configurable constants for the API key and endpoints.
+   - Includes dependency injection to facilitate unit testing of the ViewModel.
+- **View (`View`)**: Contains SwiftUI views, including the map and history views.
+   - Uses an `enum` (`ActiveView`) to manage navigation between views more clearly and prevent inconsistent states.
+- **ViewModel (`ViewModel.swift`)**: Manages app data and interactions between the model and the view.
+   - Implements dependency injection, allowing for a mock network service (`MockNetworkService`) in unit tests to control response data.
 
 ## Screenshots
 
@@ -22,6 +34,12 @@ WeatherApp is a simple iOS app that fetches and displays weather information for
 - `Service`: Handles network requests with configurable constants for API keys and endpoints.
 - `View`: Contains SwiftUI views for map and history display.
 - `ViewModel.swift`: Manages app data and interactions between the model and view.
+
+## Technical Decisions
+
+- **MVVM Architecture**: We use the MVVM pattern to decouple business logic from the user interface, improving scalability and testability.
+- **Dependency Injection**: The `ViewModel` uses dependency injection, enabling the use of a mock `NetworkService` (`MockNetworkService`) in unit tests to control response data.
+- **View Management with `enum`**: An `enum` is used to represent active views in the application, avoiding navigation conflicts and enhancing extensibility.
 
 ## Usage
 

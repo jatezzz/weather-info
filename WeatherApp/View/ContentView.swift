@@ -6,21 +6,19 @@
 //
 
 import SwiftUI
-import SwiftUI
 
 struct ContentView: View {
-    @State private var isMapsViewActive = false
-    @State private var isOtherFragmentActive = false
+    @State private var activeView: ActiveView = .none
     @ObservedObject private var viewModel = ViewModel(networkService: RealNetworkService())
     
     var body: some View {
         VStack(spacing: 20) {
             Button("Reemplazar con MapsView") {
-                isMapsViewActive.toggle()
+                activeView = .mapsView
             }
             
             Button("Reemplazar con OtherFragment") {
-                isOtherFragmentActive.toggle()
+                activeView = .otherFragment
             }
             
             Button("Ejecutar petición API") {
@@ -31,16 +29,21 @@ struct ContentView: View {
                 ProgressView("Loading...")
             }
             
-            if isMapsViewActive {
+            switch activeView {
+            case .mapsView:
                 MapsView(viewModel: viewModel)
-                    .onAppear() {
+                    .onAppear {
                         viewModel.fetchCoordinates()
                     }
-            } else if isOtherFragmentActive {
+            case .otherFragment:
                 OtherFragment(viewModel: viewModel)
+            case .none:
+                Text("Seleccione una vista para mostrar")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
             }
         }
-        .padding()
+        .padding(.vertical)
     }
 }
 

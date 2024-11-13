@@ -29,20 +29,31 @@
 		520598EA2CE4E37800507BA9 /* WeatherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		520599122CE4E41500507BA9 /* Exceptions for "WeatherApp" folder in "WeatherAppTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Models/Coordinate.swift,
+				Models/CoordinateResponse.swift,
+				Service/NetworkService.swift,
+				ViewModel.swift,
+			);
+			target = 520598DF2CE4E37800507BA9 /* WeatherAppTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		520598D22CE4E37700507BA9 /* WeatherApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				520599122CE4E41500507BA9 /* Exceptions for "WeatherApp" folder in "WeatherAppTests" target */,
+			);
 			path = WeatherApp;
 			sourceTree = "<group>";
 		};
 		520598E32CE4E37800507BA9 /* WeatherAppTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = WeatherAppTests;
-			sourceTree = "<group>";
-		};
-		520598ED2CE4E37800507BA9 /* WeatherAppUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = WeatherAppUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -77,7 +88,6 @@
 			children = (
 				520598D22CE4E37700507BA9 /* WeatherApp */,
 				520598E32CE4E37800507BA9 /* WeatherAppTests */,
-				520598ED2CE4E37800507BA9 /* WeatherAppUITests */,
 				520598D12CE4E37700507BA9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -152,9 +162,6 @@
 			);
 			dependencies = (
 				520598EC2CE4E37800507BA9 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				520598ED2CE4E37800507BA9 /* WeatherAppUITests */,
 			);
 			name = WeatherAppUITests;
 			packageProductDependencies = (
